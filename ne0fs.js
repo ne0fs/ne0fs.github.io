@@ -45,7 +45,7 @@ fetch('uploader.wasm').then(response => response.arrayBuffer()).then(function (b
                             return buf.length
                     }
                 }
-                go.argv = ["NE0FS", "-i"]
+                go.argv = ["NE0FS", "-i", "-f", file.name]
                 go.run(result.instance);
             }
         });
