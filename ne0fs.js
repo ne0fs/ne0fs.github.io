@@ -8,6 +8,7 @@ fetch('uploader.wasm').then(response => response.arrayBuffer()).then(function (b
                 alert('no file selected')
                 return
             }
+            document.getElementById('status').innerText = 'start uploading ...'
             const file = files[0]
             reader.readAsArrayBuffer(file)
             reader.onloadend = function (e) {
@@ -67,6 +68,7 @@ fetch('downloader.wasm').then(response => response.arrayBuffer()).then(function 
             alert('not a ne0fs link')
             return
         }
+        document.getElementById('status').innerText = 'start downloading ...'
         const url = new URL('https://' + addr.substr(8))
         const go = new Go()
         WebAssembly.instantiate(bin, go.importObject).then((result) => {
