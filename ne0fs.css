@@ -58,9 +58,11 @@ body div div div button {
     border: 1px solid #20bf6b !important;
     border-radius: 6px;
     display: inline-block;
-    min-width: 15%;
-    max-width: 15%;
+    min-width: 20%;
+    max-width: 20%;
     text-align: center;
+    line-break: strict;
+    word-break: break-all;
     margin: 8px;
     box-sizing: border-box;
     transition: all 0.3s ease 0s;
