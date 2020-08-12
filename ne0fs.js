@@ -1,14 +1,14 @@
 fetch('uploader.wasm').then(response => response.arrayBuffer()).then(function (bin) {
     document.getElementById('upload').onclick = function () {
+        const files = document.getElementById('file').files
+        if (files.length == 0) {
+            alert('no file selected')
+            return
+        }
+        document.getElementById('status').innerText = 'start uploading ...'
         const go = new Go()
         WebAssembly.instantiate(bin, go.importObject).then((result) => {
             const reader = new FileReader();
-            const files = document.getElementById('file').files
-            if (files.length == 0) {
-                alert('no file selected')
-                return
-            }
-            document.getElementById('status').innerText = 'start uploading ...'
             const file = files[0]
             reader.readAsArrayBuffer(file)
             reader.onloadend = function (e) {
