@@ -45,6 +45,13 @@ fetch('uploader.wasm').then(response => response.arrayBuffer()).then(function (b
                             return buf.length
                     }
                 }
+                go.exit = (code) => {
+                    if (code !== 0) {
+                        alert("exit code:", code);
+                        return
+                    }
+                    document.getElementById('status').innerText = 'uploaded, use the displayed link to download'
+                };
                 go.argv = ["NE0FS", "-i", "-f", file.name]
                 go.run(result.instance);
             }
@@ -101,6 +108,7 @@ fetch('downloader.wasm').then(response => response.arrayBuffer()).then(function 
                 a.download = url.pathname.split('/').pop();
                 a.click();
                 window.URL.revokeObjectURL(url);
+                document.getElementById('status').innerText = 'downloaded'
             };
             go.run(result.instance);
         });

@@ -13,12 +13,13 @@ body header {
     width: 100%;
 }
 
-body header div p {
+body header div a {
     font-size: 64px;
     color: #20bf6b !important;
     width: 100%;
     text-align: center;
     margin: auto;
+    text-decoration: none;
 }
 
 body div {
